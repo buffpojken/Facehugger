@@ -19,8 +19,10 @@ gem("sinatra", "1.3.1")
 pretty("Setting up Facebook-integration")
 append_file(File.join("config", "environments", "development.rb"), configatron('facebook.app_id', ask("Facebook App ID:")))
 append_file(File.join("config", "environments", "development.rb"), configatron('facebook.app_secret', ask("Facebook App Secret:")))
+append_file(File.join("config", "environments", "development.rb"), configatron('base_url', "REPLACE THIS"))
 append_file(File.join("config", "environments", "production.rb"), configatron('facebook.app_id', 'REPLACE THIS'))
 append_file(File.join("config", "environments", "production.rb"), configatron('facebook.app_secret', 'REPLACE THIS'))
+append_file(File.join("config", "environments", "production.rb"), configatron('base_url', "REPLACE THIS"))
 
 # Remove public index
 pretty("Removing index.html")

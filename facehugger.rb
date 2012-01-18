@@ -72,10 +72,8 @@ route("match '/auth/facebook(/:action(/:id(.:format)))',    :to => FacebookAuthe
 
 # Add lib-autoloading
 pretty("Adding lib to autoload-path")
-inject_into_file(File.join("config", "application.rb"), %{
-  config.autoload_paths += %W(#{File.join("lib")})
-  config.autoload_paths += %W(#{File.join("lib", "metal")})
-}, {:after => "# Custom directories with classes and modules you want to be autoloadable."})
+inject_into_file(File.join("config", "application.rb"), 'config.autoload_paths += %W(#{File.join(Rails.root, "lib")})', {:after => "# Custom directories with classes and modules you want to be autoloadable."})
+inject_into_file(File.join("config", "application.rb"), 'config.autoload_paths += %W(#{File.join(Rails.root, "lib", "metal")})', {:after => "# Custom directories with classes and modules you want to be autoloadable."})
 
 # Integrate FBootstrap into application
 pretty("Setting up GUI-framework")
